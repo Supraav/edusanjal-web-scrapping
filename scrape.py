@@ -51,8 +51,8 @@ for url in urls:
     street_line_address=''.join(location)
     # print(street_line_address)
     if len(location) > 2:    
-        city=location[0]+location[1]
-        district=location[2]
+        city=location[0:-1]
+        district=location[-1]
     else:
         city=location[0]
         district=location[1]
@@ -115,10 +115,12 @@ for url in urls:
     # print(est)
 
 
-    #organization type
+
+    #ownership type
     ownership_type_find=right_column.find('li',title='Ownership')
-    org_type= ownership_type_find.span.get_text()
-    # print(org_type)
+    ownership_type= ownership_type_find.span.get_text()
+    # print(ownership_type)
+
 
 
     #gallery
@@ -172,6 +174,8 @@ for url in urls:
         'about':about_text,
         'websiteURL':url,
         'established':est,
+        'organization_type':'college',
+        'ownership_type':ownership_type,
         'gallery':gallery,
         'scholarship':
         {
